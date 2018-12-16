@@ -24,8 +24,8 @@
 
     <link rel="stylesheet" href="css/nav.css">
 
-
-    <!-- Optional JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!-- <script src="js/app.js"></script> -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -94,7 +94,7 @@
             <div class="col-md-3 card ">
                 <img class="card-img-top imageShadow" src="images/bio.jpg" alt="Card image">
                 <div class="card-body cardShadow">
-                    <h3 class="card-title legendFont">John Doe</h3>
+                    <h3 id="userName" class="card-title legendFont"></h3>
                     <br />
                     <b class="SubheadingFont">About</b>
                     <hr>
@@ -712,6 +712,52 @@
             </div>
         </section>
     </footer>
+
+    <script>
+
+
+
+            var config = {
+        apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
+        authDomain: "syrup-6e640.firebaseapp.com",
+        databaseURL: "https://syrup-6e640.firebaseio.com",
+        projectId: "syrup-6e640",
+        storageBucket: "syrup-6e640.appspot.com",
+        messagingSenderId: "428019578808"
+    };
+    firebase.initializeApp(config);
+
+     window.onload = function () {
+
+        var user = firebase.auth().currentUser.uid;
+        const displayName = document.getElementById("userName");
+        console.log(user);
+        //Create references
+        const dbRefUsers = firebase.database().ref().child("UserInfo");
+
+        dbRefUsers.on("value", function(snapshot){
+            snapshot.forEach(function(childSnapshot){
+
+            firebase.auth().onAuthStateChanged(function(user) {
+                console.log(user);
+            if (user) {
+                // User is signed in.
+                var childData = childSnapshot.val().username;
+                console.log(childData);
+                displayName.innerText = childData;
+
+            } else {
+                // No user is signed in.
+                console.log("nothing");
+            }
+});
+
+            });
+
+        });
+
+    }
+    </script>
 
 
 </body>

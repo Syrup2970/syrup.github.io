@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -198,15 +197,16 @@
 
                 <span> THE CHINESE CAFE </span>
             </div>
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>PASTA</li>
+
+            <div id = "frame">
+                <ul id="vertical" >
+                    <li id = "food">PASTA</li>
                 </ul>
 
-                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular9.jpg" />
-                <p class="homeContainer legendFont"><b>Tayto</b></p>
+                <img id = "foodImage"  src="images/popular9.jpg" />
+                <p id = "overImageText" ><b>Tayto</b></p>
 
-                <span> TAYTO </span>
+                <span id = "slideText"> TAYTO </span>
             </div>
 
             <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
@@ -533,6 +533,22 @@
             </div>
         </section>
     </footer>
+
+    <script>
+            var dynamic_div = document.getElementById('frame');
+            dynamic_div.classList.add("col-lg-2", "col-md-3", "col-6","divPositioning", "wrap");
+
+            var dynamic_list = document.getElementById('vertical');
+            dynamic_list.classList.add("verticalAlignText");
+            var dynamic_list_item = document.getElementById('food');
+            var dynamic_image = document.getElementById('foodImage');
+            dynamic_image.classList.add("centered","imageTranslate", "imagePositioning", "img-fluid");
+            var dynamic_restaurant_name = document.getElementById('overImageText');
+            dynamic_restaurant_name.classList.add("homeContainer","legendFont");
+
+            var dynamic_under_name = document.getElementById("slideText");
+
+    </script>
 </body>
 
 </html>
