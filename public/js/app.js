@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
-    authDomain: "syrup-6e640.firebaseapp.com",
-    databaseURL: "https://syrup-6e640.firebaseio.com",
-    projectId: "syrup-6e640",
-    storageBucket: "syrup-6e640.appspot.com",
-    messagingSenderId: "428019578808"
+    apiKey: 'AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4',
+    authDomain: 'syrup-6e640.firebaseapp.com',
+    databaseURL: 'https://syrup-6e640.firebaseio.com',
+    projectId: 'syrup-6e640',
+    storageBucket: 'syrup-6e640.appspot.com',
+    messagingSenderId: '428019578808',
 };
 firebase.initializeApp(config);
 
@@ -19,12 +19,12 @@ var storage = firebase.storage();
 var storageRef = storage.ref();
 
 //Create references
-const dbRefRestaurants = database.ref().child("Restaurants");
+// const dbRefRestaurants = database.ref().child('Restaurants');
 
 //Sync Object Changes
-dbRefRestaurants.on("child_added", function (data) {
-    console.log(data.val());
-});
+// dbRefRestaurants.on('child_added', function(data) {
+//     console.log(data.val());
+// });
 
 // dbRefRestaurants.set({
 //     category: "Fast Food",
