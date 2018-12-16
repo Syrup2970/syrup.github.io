@@ -10,6 +10,14 @@ body {
     padding: 25px 0 15px 0;
 }
 
+.div-right {
+    background: grey;
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
 .divider-1 .line {
     width: 160px;
     margin: 0 auto;
@@ -44,9 +52,9 @@ a:hover {
     justify-content: center;
     align-items: center;
     color: white;
-    font-family: Helvetica;
+    font-family: Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 100px;
     width: 100%;
     height: 90%;
 }
@@ -55,13 +63,6 @@ iframe {
     min-width: 100px !important;
 }
 
-.div-right {
-    background: grey;
-    height: 90vh;
-    background-image: url(../images/bg_10.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .restaurant-image-container {
     padding-top: 2%;
     position: relative;
@@ -71,7 +72,7 @@ iframe {
 .div-left-info,
 .div-left-comments,
 .div-right-instagram {
-    height: 90vh;
+    /* height: 90vh; */
     padding: 0;
 }
 
@@ -86,30 +87,34 @@ iframe {
 
 .card {
     width: 100%;
-    height: 106%;
+    /* height: 106%; */
 }
 
 .commentbox {
     height: 147%;
 }
+
 .card-title {
     font-size: 40px;
     color: darksalmon;
 }
+
 .info-card .card-body * {
     margin: 2% 0;
 }
+
 .info-card .list-group-item {
     font-size: 30px;
 }
+
 .ratings {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url(../images/menu-image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5% 0;
     height: 70vh;
+    background-attachment: fixed;
 }
+
 .ratings h3 {
     color: white;
 }
@@ -118,9 +123,11 @@ iframe {
     width: 15%;
     height: 15%;
 }
+
 .comment {
     height: 20%;
 }
+
 .comment-card .card-body {
     overflow: auto;
 }
@@ -133,7 +140,7 @@ iframe {
 .wishlist {
     background: transparent;
     border: 4px solid white;
-    padding: 5px;
+    padding: 10px;
     color: white;
     border-radius: 50px;
     float: right;
@@ -145,8 +152,8 @@ iframe {
 
 .favourite:hover,
 .wishlist:hover {
-    background: lightblue;
-    color: black;
+    background: #e9724c;
+    color: white;
 }
 
 /* SVG BUTTON CSS */
@@ -184,11 +191,13 @@ iframe {
 .button:hover .menu-button {
     fill: salmon;
 }
+
 .button:hover .outer-circle {
     transform: rotate(360deg);
 }
 
 @media only screen and (max-width: 600px) {
+
     .div-right-instagram,
     .div-right-dishes {
         margin-top: 5%;
@@ -196,38 +205,48 @@ iframe {
 }
 
 @media only screen and (max-width: 992px) {
+
     /* For tablets: */
     .text-block {
         font-size: 65px;
     }
+
     .card {
         height: 70%;
     }
+
     .ratings {
         margin-top: -20%;
     }
+
     .commentbox {
         height: 95%;
     }
+
     .div-right-dishes {
         margin-top: -20%;
     }
 }
 
 @media only screen and (max-width: 480px) {
+
     /* For phones: */
     .text-block {
         font-size: 40px;
     }
+
     .card {
         height: 95%;
     }
+
     .ratings {
         margin-top: -20%;
     }
+
     .marginSetting {
         margin-top: 50%;
     }
+
     .div-right-instagram,
     .div-right-dishes {
         margin-top: -17%;

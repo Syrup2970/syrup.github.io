@@ -26,6 +26,36 @@
 
 
     <!-- Optional JavaScript -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!-- Add additional services that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script> -->
+    <script src="js/app.js"></script>
+    <script>
+        window.onload = function () {
+        document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
+        document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+        };
+        
+        var selectedFile;
+        function handleFileUploadChange(e) {
+            selectedFile = e.target.files[0];
+        }
+
+        function handleFileUploadSubmit(e) {
+            const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+            uploadTask.on('state_changed', (snapshot) => {
+            // Observe state change events such as progress, pause, and resume
+            }, (error) => {
+                // Handle unsuccessful uploads
+                console.log(error);
+            }, () => {
+                // Do something once upload is complete
+                console.log('success');
+            });
+        }
+    </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -43,22 +73,14 @@
 
     <nav class="header navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand brand" href="index.html"><B>SYRUP</B></a>
+            <a class="navbar-brand brand" href="index.html"><b>SYRUP</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
                 aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExample07">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="nav-item">
-                        <a href="UserProfilePage.html" class="nav-link">My Profile</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mr-auto">
-                </ul>
-
-
+                <ul class="navbar-nav mr-auto"></ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
@@ -70,8 +92,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Categories.html">CATEGORIES</a>
                     </li>
-                    <li><a class="btn btn-link-3" href="Sign-in.html">LOG IN</a></li>
-                    <li><a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a></li>
+                    <li class="nav-item">
+                        <a href="UserProfilePage.html" class="nav-link">PROFILE</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-link-3" href="Sign-in.html">LOG IN</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -92,6 +121,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 card ">
+                <div id="filesubmit">
+                    <input type="file" class="file-select" accept="image/*" />
+                    <button class="file-submit">SUBMIT</button>
+                </div>
                 <img class="card-img-top imageShadow" src="images/bio.jpg" alt="Card image">
                 <div class="card-body cardShadow">
                     <h3 class="card-title legendFont">John Doe</h3>
