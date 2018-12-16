@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+    <link href="css/header.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link href="css/footer.css" rel="stylesheet" />
+    <link href="css/home-page.css" rel="stylesheet" />
+
+    <!-- Font Not So Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous" />
+
+    <!-- Firebase -->
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <!-- Add additional services that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script> -->
+    <script src="js/app.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="js/nav.js"></script>
+
+    <script src="js/choices.js"></script>
+    <script>
+        var textPresetVal = new Choices("#choices-text-preset-values", {
+                removeItemButton: true
+            });
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/nav.js"></script>
+</head>
+
+<body>
+    <nav class="header navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand brand" href="index.html"><b>SYRUP</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav mr-auto"></ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">ABOUT <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FoodFilter.html">FOOD FILTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Categories.html">CATEGORIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="UserProfilePage.html" class="nav-link">PROFILE</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-link-3" href="Sign-in.html">LOG IN</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="s004">
+        <img src="images/logo-bg.svg" class="drip" />
+
+        <form>
+            <fieldset>
+                <legend style="font-size:115px">SYRUP</legend>
+                <legend style="font-size:33px;font-weight:400;font-family:Montserrat">
+                    YOUR GO-TO FOOD GUIDE
+                </legend>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 inner-form">
+                            <div class="input-field">
+                                <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Find By Name...." />
+                                <button class="btn-search" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 inner-form">
+                            <div class="input-field">
+                                <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Find By Location...." />
+                                <button class="btn-search" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        var textPresetVal = new Choices("#choices-text-preset-values", {
+            removeItemButton: true
+        });
+    </script>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <!-- About Section -->
+    <div class="container center">
+        <div class="row">
+            <div class="col-lg-11">
+                <h4><b>WHO ARE WE</b></h4>
+                <h6><i>With Passion For Real, Good Food</i></h6>
+                <p>
+                    Just me, myself and I, exploring the universe of
+                    unknownment. I have a heart of love and an interest of
+                    lorem ipsum and mauris neque quam blog. I want to share
+                    my world with you. Praesent tincidunt sed tellus ut
+                    rutrum. Sed vitae justo condimentum, porta lectus vitae,
+                    ultricies congue gravida diam non fringilla. Praesent
+                    tincidunt sed tellus ut rutrum. Sed vitae justo
+                    condimentum, porta lectus vitae, ultricies congue
+                    gravida diam non fringilla.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="divider-1">
+        <div class="line"></div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-11">
+                <h4><b>POPULAR CHOICES</b></h4>
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row marginSetting">
+            <div class="d-none d-lg-block col-lg-1 "></div>
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>SUSHI</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular1.jpg" />
+
+                <a href="Restaurant.html">
+                    <p class="homeContainer"><b>The Chinese Cafe'</b></p>
+                </a>
+
+                <span> THE CHINESE CAFE </span>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>PASTA</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular9.jpg" />
+                <p class="homeContainer legendFont"><b>Tayto</b></p>
+
+                <span> TAYTO </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>DUMPLINGS</li>
+                </ul>
+
+                <img class="centered imageTranslate divPositioning imagePositioning" src="images/popular2.jpg" />
+                <p class="homeContainer legendFont"><b>Asian&nbspWok</b></p>
+                <span> ASIAN WOK </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>SAUCY&nbspLEGPIECES</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning" src="images/popular3.jpg" />
+                <p class="homeContainer legendFont"><b>Khokha Khola</b></p>
+                <span> KHOKA KHOLA </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>MACARONS</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning" src="images/popular4.jpg" />
+                <p class="homeContainer legendFont"><b>Crema</b></p>
+                <span> CREMA </span>
+            </div>
+            <div class="d-none d-lg-block col-lg-1"></div>
+            <div class="d-none d-lg-block col-lg-1"></div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>ICECREAM&nbspTARTS</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular5.jpg" />
+                <p class="homeContainer legendFont"><b>Zummy's</b></p>
+                <span> ZUMMY'S </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>DOUGHNUTS</li>
+                </ul>
+
+                <img class="imageTranslate divPositioning imagePositioning" src="images/popular6.jpg" />
+                <p class="homeContainer legendFont">
+                    <b>Guilty Pleasures</b>
+                </p>
+                <span> GUILTY PLEASURES </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>CONTINENTAL&nbspSALAD</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning" src="images/popular7.jpg" />
+                <p class="homeContainer legendFont">
+                    <b>Beef Lettuce Tomato</b>
+                </p>
+                <span> BLT </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>MEAT&nbspBALLS</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning" src="images/popular8.jpg" />
+                <p class="homeContainer legendFont"><b>Cravings</b></p>
+                <span> CRAVINGS </span>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>NEW YORK BEEF BURGER</li>
+                </ul>
+
+                <img class="centered imageTranslate imagePositioning" src="images/popular10.jpg" />
+                <p class="homeContainer legendFont"><b>Jessie's</b></p>
+                <span> JESSIE'S </span>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="divider-1">
+        <div class="line"></div>
+    </div>
+    <br />
+    <br />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-11">
+                <h4><b>SPECIAL OFFERS</b></h4>
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row marginSetting">
+            <div class="d-none d-lg-block col-lg-1"></div>
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>FRESH FOOD ALL DAY</li>
+                </ul>
+
+                <img class="imageTranslate imagePositioning img-fluid" src="https://scontent.fkhi15-1.fna.fbcdn.net/v/t1.0-9/48361069_611135672654948_8670064104624357376_n.jpg?_nc_cat=105&_nc_ht=scontent.fkhi15-1.fna&oh=6cd0727ada9a7f2c5ba313982cfeac35&oe=5C965F64" />
+                <span> TANDOORI </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>FREE SESAME CHICKEN</li>
+                </ul>
+
+                <img class="imageTranslate divPositioning imagePositioning" src="images/offer2.jpg" />
+
+                <span> GINYAKI </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>50% OFF LUNCH DEAL</li>
+                </ul>
+
+                <img class="imageTranslate imagePositioning" src="images/offer3.jpg" />
+
+                <span> ROASTERS </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>FREE CHICKEN CHEESE PLATTER</li>
+                </ul>
+
+                <img class="imageTranslate imagePositioning" src="images/offer4.jpg" />
+
+                <span> THE WHITE HOUSE </span>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>IFTAR BUFFET</li>
+                </ul>
+
+                <img class="imageTranslate imagePositioning" src="images/offer5.jpg" />
+
+                <span> FALETTI'S HOTEL </span>
+            </div>
+            <div class="d-none d-lg-block col-lg-1"></div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="divider-1">
+        <div class="line"></div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <footer class="nb-footer footerbg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="about">
+                        <br />
+
+                        <img src="images/logo-dark.png" class="img-responsive center-block" alt="" />
+                        <p>
+                            SYRUP is a website to help users to search for
+                            popular restuarants and places they want to
+                            visit. It provides foodies a platform to share
+                            their experience SYRUP is a website to help
+                            users to search for popular restuarants and
+                            places they want to visit. It provides foodies a
+                            platform to share their experience at different
+                            eatries and benefit others from their views.
+                        </p>
+
+                        <br />
+                        <div class="bigpixi-footer-social">
+                            <ul>
+                                <li class="bigpixi-footer-social__list-item">
+                                    <a class="bigpixi-footer__icon-link" rel="nofollow" href="https://twitter.com/">
+                                        <img class="bigpixi-footer-social__icon" alt="Twitter" title="Twitter" src="http://simpleicons.org/icons/twitter.svg" />
+                                    </a>
+                                </li>
+                                <li class="bigpixi-footer-social__list-item">
+                                    <a class="bigpixi-footer__icon-link" rel="nofollow" href="https://www.facebook.com/">
+                                        <img class="bigpixi-footer-social__icon" alt="Facebook" title="Facebook" src="http://simpleicons.org/icons/facebook.svg" />
+                                    </a>
+                                </li>
+                                <li class="bigpixi-footer-social__list-item">
+                                    <a class="bigpixi-footer__icon-link" rel="nofollow" href="https://www.youtube.com/">
+                                        <img class="bigpixi-footer-social__icon" alt="YouTube" title="YouTube" src="http://simpleicons.org/icons/youtube.svg" />
+                                    </a>
+                                </li>
+                                <li class="bigpixi-footer-social__list-item">
+                                    <a class="bigpixi-footer__icon-link" rel="nofollow" href="https://www.instagram.com/">
+                                        <img class="bigpixi-footer-social__icon" alt="Instagram" title="Instagram" src="http://simpleicons.org/icons/instagram.svg" />
+                                    </a>
+                                </li>
+                                <li class="bigpixi-footer-social__list-item">
+                                    <a class="bigpixi-footer__icon-link" rel="nofollow" href="https://www.pinterest.com/">
+                                        <img class="bigpixi-footer-social__icon" alt="Pinterest" title="Pinterest" src="http://simpleicons.org/icons/pinterest.svg" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 5%">
+                    <div class="footer-info-single">
+                        <h2 class="title">Help Center</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Features</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    FAQ's</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Sitemap</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Site Info</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 5%">
+                    <div class="footer-info-single">
+                        <h2 class="title">Customer information</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    FAQ's</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Your Items</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Your blogs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 5%">
+                    <div class="footer-info-single">
+                        <h2 class="title">Security & privacy</h2>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Terms Of Use</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Return / Refund Policy</a>
+                            </li>
+                            <li>
+                                <a href="#" title=""><i class="fa fa-angle-double-right"></i>
+                                    Sponser / User privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 15%">
+                    <div class="footer-info-single">
+                        <h2 class="title">Payments</h2>
+                        <p>
+                            All payments are to be made through online bank
+                            tranfer no easy paisa or cash on delivery is
+                            accepted.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12" style="text-align:center">
+                        <p>
+                            Copyright © 2018. All rights reserved for SYRUP
+                        </p>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>

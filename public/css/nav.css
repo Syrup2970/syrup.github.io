@@ -13,6 +13,14 @@ a.btn-link-3 {
     font-weight: 700;
     font-size: 20px;
 }
+
+a.navbar-brand {
+    /* background-image: url('../images/logo-dark.png'); */
+    /* width: 25%; */
+    color: gray;
+    font-size: 25px;
+}
+
 a.btn-link-3:hover {
     color: white;
 }
@@ -59,7 +67,7 @@ a.nav-link {
     background-color: transparent;
 }
 
-.header * {
+.header {
     color: white;
 }
 
@@ -91,6 +99,7 @@ a.btn-link-3.active {
 }
 
 @media only screen and (max-width: 992px) {
+
     /* For tablets: */
     /* a.navbar-brand {
         width: 15%;
@@ -98,6 +107,7 @@ a.btn-link-3.active {
     .fas.fa-bars {
         color: white;
     }
+
     a.btn-link-3 {
         position: relative;
         display: inline-block;
@@ -106,27 +116,28 @@ a.btn-link-3.active {
         padding: 3px 15px;
         border-radius: 6px;
     }
+
     a.nav-link.dropdown-toggle {
         padding-left: 0px;
     }
 }
 
 @media only screen and (max-width: 480px) {
+
     /* For phones: */
     .header {
         background-color: white;
     }
+
     .header * {
         color: slategray;
     }
-    /* a.navbar-brand {
-        background-image: url('../images/logo-dark.png');
-        width: 25%;
-    } */
+
     a.nav-link {
         color: slategray;
         text-decoration: none;
     }
+
     a.btn-link-3 {
         position: relative;
         display: inline-block;
@@ -135,9 +146,11 @@ a.btn-link-3.active {
         padding: 3px 15px;
         border-radius: 6px;
     }
+
     a.nav-link.dropdown-toggle {
         padding-left: 0px;
     }
+
     .fas.fa-bars {
         color: slategray;
     }
