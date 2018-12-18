@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Categories</title>
+        <style>
+            * {
+                text-align: center;
+                box-sizing: border-box;
+            }
+            #outer {
+                border: 10px solid pink;
+                background: lightblue;
+                height: 1000px;
+                width: 1000px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .restaurant {
+                border: 2px solid red;
+                border-radius: 5px;
+                background: lavender;
+                text-align: center;
+                color: aqua;
+                width: 200px;
+                height: 150px;
+            }
+
+            .beforeText {
+                text-decoration: underline;
+            }
+            .resText {
+                color: blueviolet;
+                font-family: Roboto;
+                font-size: 20px;
+            }
+        </style>
+
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: 'AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4',
+                authDomain: 'syrup-6e640.firebaseapp.com',
+                databaseURL: 'https://syrup-6e640.firebaseio.com',
+                projectId: 'syrup-6e640',
+                storageBucket: 'syrup-6e640.appspot.com',
+                messagingSenderId: '428019578808',
+            };
+            firebase.initializeApp(config);
+        </script>
+    </head>
+    <body>
+        <h1>Category Name</h1>
+        <div class="outer" id="outer"></div>
+
+        <script>
+            var db = firebase.database().ref();
+            var outer = document.getElementById('outer');
+            var restaurantNames = [];
+            var category = 'Chinese';
+
+            db.child('Categories/' + category).once('value', function(
+                snapNames
+            ) {
+                var i = 0;
+
+                snapNames.forEach(function(childName) {
+                    db.child('Restaurants/' + childName.key).once(
+                        'value',
+                        function(resSnaps) {
+                            const restaurantData = resSnaps.val();
+
+                            console.log(resSnaps.key);
+                            console.log(restaurantData['location']);
+                            console.log(restaurantData['category']);
+                            console.log(restaurantData['image']);
+                        }
+                    );
+                });
+            });
+        </script>
+    </body>
+</html>
