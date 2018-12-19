@@ -16,15 +16,15 @@ var database = firebase.database();
 var storage = firebase.storage();
 
 // Create a storage reference from our storage service
-// var storageRef = storage.ref();
+var storageRef = storage.ref();
 
-// //Create references
-// const dbRefRestaurants = database.ref().child("Restaurants");
+//Create references
+const dbRefRestaurants = database.ref().child("Restaurants");
 
-// //Sync Object Changes
-// dbRefRestaurants.on("child_added", function (data) {
-//     console.log(data.val());
-// });
+//Sync Object Changes
+dbRefRestaurants.on("child_added", function (data) {
+    console.log(data.val());
+});
 
 // dbRefRestaurants.set({
 //     category: "Fast Food",

@@ -24,7 +24,8 @@
     <!-- Add additional services that you want to use -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script> -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script> -->
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -33,12 +34,12 @@
         crossorigin="anonymous"></script>
     <script src="js/nav.js"></script>
 
-    <script src="js/choices.js"></script>
-    <script>
+    <!-- <script src="js/choices.js"></script> -->
+    <!-- <script>
         var textPresetVal = new Choices("#choices-text-preset-values", {
                 removeItemButton: true
             });
-        </script>
+        </script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/waypoints.min.js"></script>
@@ -120,11 +121,11 @@
         </form>
     </div>
 
-    <script>
+    <!-- <script>
         var textPresetVal = new Choices("#choices-text-preset-values", {
             removeItemButton: true
         });
-    </script>
+    </script> -->
 
     <br />
     <br />
@@ -181,6 +182,20 @@
         </div>
     </div>
 
+    <!-- <div class="container-fluid">
+        <div class="row marginSetting">
+            <div class="col-10 mx-auto">
+                <div class="row" id="panelsContainer"> -->
+                    <!-- The panels will be appended to this div -->
+                    <!--
+                        For Hamna : Container should be empty at first. The Items will be appended to the div above
+                    -->
+                <!-- </div>
+            </div>
+        </div>
+    </div> -->
+
+
     <div class="container-fluid">
         <div class="row marginSetting">
             <div class="d-none d-lg-block col-lg-1 "></div>
@@ -197,16 +212,15 @@
 
                 <span> THE CHINESE CAFE </span>
             </div>
-
-            <div id = "frame">
-                <ul id="vertical" >
-                    <li id = "food">PASTA</li>
+            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
+                <ul class="verticalAlignText">
+                    <li>PASTA</li>
                 </ul>
 
-                <img id = "foodImage"  src="images/popular9.jpg" />
-                <p id = "overImageText" ><b>Tayto</b></p>
+                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular9.jpg" />
+                <p class="homeContainer legendFont"><b>Tayto</b></p>
 
-                <span id = "slideText"> TAYTO </span>
+                <span> TAYTO </span>
             </div>
 
             <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
@@ -533,22 +547,38 @@
             </div>
         </section>
     </footer>
-
-    <script>
-            var dynamic_div = document.getElementById('frame');
-            dynamic_div.classList.add("col-lg-2", "col-md-3", "col-6","divPositioning", "wrap");
-
-            var dynamic_list = document.getElementById('vertical');
-            dynamic_list.classList.add("verticalAlignText");
-            var dynamic_list_item = document.getElementById('food');
-            var dynamic_image = document.getElementById('foodImage');
-            dynamic_image.classList.add("centered","imageTranslate", "imagePositioning", "img-fluid");
-            var dynamic_restaurant_name = document.getElementById('overImageText');
-            dynamic_restaurant_name.classList.add("homeContainer","legendFont");
-
-            var dynamic_under_name = document.getElementById("slideText");
-
-    </script>
 </body>
+
+<script>
+var config = {
+    apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
+    authDomain: "syrup-6e640.firebaseapp.com",
+    databaseURL: "https://syrup-6e640.firebaseio.com",
+    projectId: "syrup-6e640",
+    storageBucket: "syrup-6e640.appspot.com",
+    messagingSenderId: "428019578808"
+};
+firebase.initializeApp(config);
+
+const db = firebase.database().ref();
+
+
+console.log(db.child('Restaurants/').orderByChild('rating'));
+
+
+
+
+// db.child('Restaurants').once('value', function(snapNames) {
+
+//     snapNames.forEach(function(childName) {
+//         var topRatedRestaurants = db.child('Restaurants/' + childName.key).orderByChild('rating');
+//         console.log(topRatedRestaurants);
+//     });
+// });
+// var topRatedRestaurantsRef = firebase.database.ref('Restaurants'){
+
+// }
+
+</script>
 
 </html>

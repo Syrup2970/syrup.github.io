@@ -72,6 +72,7 @@
                     </li>
                     <li><a class="btn btn-link-3" href="Sign-in.html">LOG IN</a></li>
                     <li><a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a></li>
+                    <li><a id = "signout"  class="btn btn-link-3" >SIGN OUT</a></li>
                 </ul>
             </div>
         </div>
@@ -103,15 +104,15 @@
                     <hr>
                     <div class="info">
                         <img class="userIcons" src="https://simpleicons.org/icons/whatsapp.svg" />
-                        <span class="textual">+923319755555<br /></span>
+                        <span id = "userContact" class="textual"><br /></span>
                     </div>
                     <div class="info">
                         <img class="userIcons" src="https://simpleicons.org/icons/facebook.svg" />
-                        <span class="textual">JohnDoe<br /></span>
+                        <span id = "fbName" class="textual"><br /></span>
                     </div>
                     <div class="info">
                         <img class="userIcons" src="https://simpleicons.org/icons/instagram.svg" />
-                        <span class="textual">JohnDude<br /></span>
+                        <span id = "instaName" class="textual"><br /></span>
                     </div>
                 </div>
             </div>
@@ -717,7 +718,7 @@
 
 
 
-            var config = {
+        var config = {
         apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
         authDomain: "syrup-6e640.firebaseapp.com",
         databaseURL: "https://syrup-6e640.firebaseio.com",
@@ -729,35 +730,74 @@
 
      window.onload = function () {
 
-        var user = firebase.auth().currentUser.uid;
-        const displayName = document.getElementById("userName");
-        console.log(user);
-        //Create references
-        const dbRefUsers = firebase.database().ref().child("UserInfo");
+         userDataDisplay();
+         signoutUser();
+     };
 
-        dbRefUsers.on("value", function(snapshot){
-            snapshot.forEach(function(childSnapshot){
+         function signoutUser(){
 
-            firebase.auth().onAuthStateChanged(function(user) {
-                console.log(user);
-            if (user) {
-                // User is signed in.
-                var childData = childSnapshot.val().username;
-                console.log(childData);
-                displayName.innerText = childData;
-
-            } else {
-                // No user is signed in.
-                console.log("nothing");
-            }
-});
-
+            document.getElementById('signout').addEventListener('click', function(){
+                firebase.auth().signOut();
+                location.href="Sign-in.html";
             });
 
-        });
+         }
 
-    }
+        function userDataDisplay(){
+
+                        //var user = firebase.auth().currentUser;
+            const displayName = document.getElementById("userName");
+            const displayContact = document.getElementById("userContact");
+            const displayfbName = document.getElementById("fbName");
+            const displayinstaName = document.getElementById("instaName");
+
+
+            //Create references
+            // const dbRefUsers = firebase.database().ref().child("UserInfo");
+
+            // dbRefUsers.on("value", function(snapshot){
+            //     snapshot.forEach(function(childSnapshot){
+
+                firebase.auth().onAuthStateChanged(function(user) {
+
+                if (user) {
+                    console.log(user.uid);
+                    var userEmail = firebase.auth().currentUser.email;
+                    console.log(userEmail);
+                    firebase.database().ref('UserInfo').once('value').then(function(snapshot) {
+                    snapshot.forEach(function(childSnapshot){
+                        if(userEmail === childSnapshot.val().email){
+                            var username = (childSnapshot.val().username);
+                            displayName.innerText = username;
+                            displayfbName.innerText = username;
+                            displayinstaName.innerText = username;
+
+                            console.log(childSnapshot.val().contact);
+
+                            var usercontact = (childSnapshot.val().contact);
+                            displayContact.innerText = usercontact;
+
+
+                            //console.log(childSnapshot.val().usercontact);
+                        }
+
+  });
+});
+
+                }
+
+
+                else {
+                    // No user is signed in.
+                    console.log("nothing");
+                }
+    });
+
+        }
+
+
     </script>
+
 
 
 </body>
