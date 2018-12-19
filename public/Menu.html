@@ -31,7 +31,7 @@
             crossorigin="anonymous"
         ></script>
 
-        <script src="js/menu.js"></script>
+        <!-- <script src="js/menu.js"></script> -->
         <script src="js/nav.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script
@@ -109,101 +109,7 @@
                 </button>
             </div>
 
-            <div class="menu" id="menu">
-                <div class="menu-types">
-                    <div class="menu-titles row">
-                        <h1 class="align-self-center col-12 menu-title">
-                            BBQ CLASSICS
-                            <span class="open-close-menu-type"
-                                ><i class="far fa-plus-square"></i
-                            ></span>
-                        </h1>
-                        <div class="menu-title-bg"></div>
-                    </div>
-                    <div class="menu-items row justify-content-around menu-items-toggle">
-                        <h2 class="col-12">BBQ CLASSICS</h2>
-                        <h6 class="col-12">----Information----</h6>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">BBQ BAKED BEANS</h4>
-                            <p class="item-description">4R baked beans with brisket and beef</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">MAC & CHEESE</h4>
-                            <p class="item-description">Classic, creamy mac & cheese</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">TEXAS CORNBREAD</h4>
-                            <p class="item-description">
-                                Traditional cornbread with cheddar cheese and jalapeños
-                            </p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">COLLARD GREENS</h4>
-                            <p class="item-description">Collard greens with ham</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">CORNBREAD SALAD</h4>
-                            <p class="item-description">
-                                Crumbled cornbread served with a sweet tomato dressing over chopped
-                                romaine — *availability varies by location
-                            </p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">SWEET POTATO CASSEROLE</h4>
-                            <p class="item-description">
-                                Mashed sweet potatoes with brown sugar and topped with pecans
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-types">
-                    <div class="menu-titles row">
-                        <h1 class="align-self-center col-12 menu-title">
-                            BBQ CLASSICS
-                            <span class="open-close-menu-type"
-                                ><i class="far fa-plus-square"></i
-                            ></span>
-                        </h1>
-                        <div class="menu-title-bg"></div>
-                    </div>
-                    <div class="menu-items row justify-content-around menu-items-toggle">
-                        <h2 class="col-12">BBQ CLASSICS</h2>
-                        <h6 class="col-12">----Information----</h6>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">BBQ BAKED BEANS</h4>
-                            <p class="item-description">4R baked beans with brisket and beef</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">MAC & CHEESE</h4>
-                            <p class="item-description">Classic, creamy mac & cheese</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">TEXAS CORNBREAD</h4>
-                            <p class="item-description">
-                                Traditional cornbread with cheddar cheese and jalapeños
-                            </p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">COLLARD GREENS</h4>
-                            <p class="item-description">Collard greens with ham</p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">CORNBREAD SALAD</h4>
-                            <p class="item-description">
-                                Crumbled cornbread served with a sweet tomato dressing over chopped
-                                romaine — *availability varies by location
-                            </p>
-                        </div>
-                        <div class="col-6 menu-item">
-                            <h4 class="item-name">SWEET POTATO CASSEROLE</h4>
-                            <p class="item-description">
-                                Mashed sweet potatoes with brown sugar and topped with pecans
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="menu" id="menu"></div>
         </div>
 
         <footer class="nb-footer footerbg">
@@ -487,7 +393,6 @@
                         if (menuCategoryItem.key == 'image') {
                             menu_title_bg.style.backgroundImage =
                                 "url('" + menuCategoryItem.val() + "')";
-                            // continue;
                         } else {
                             // <h2 class="col-12">BBQ CLASSICS</h2>
                             // <h6 class="col-12">----Information----</h6>
@@ -519,6 +424,23 @@
                     });
 
                     menuContainer.appendChild(menu_types);
+                });
+                $(document).ready(function() {
+                    $('.menu-items').slideUp('fast');
+
+                    $('.menu-titles').click(function(e) {
+                        e.preventDefault();
+                        $target = $(this);
+                        $icon = $target.find('i').eq(0);
+                        console.log($icon);
+                        $items = $target.next();
+                        console.log($items);
+
+                        $items.slideToggle('slow');
+
+                        // $items.toggleClass('menu-items-toggle');
+                        $icon.toggleClass('icon-rotate');
+                    });
                 });
             });
         </script>

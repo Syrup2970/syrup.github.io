@@ -543,27 +543,46 @@
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
         <script src="js/app.js"></script>
         <script>
+            document.getElementById('map').style.height = '650px';
             var map;
             function initMap() {
+                // Get The Filters
+                var priceArray = localStorage.getItem('priceArray').split(',');
+                var categoryArray = localStorage.getItem('categoryArray').split(',');
+                var from = localStorage.getItem('from');
+                var to = localStorage.getItem('to');
+
+                filter(from, to, categoryArray, priceArray);
+
+                // Root Ref
                 database = firebase.database().ref();
+
                 var latitude = 0;
                 var longitude = 0;
                 localStorage.setItem('restaurantToFind', 'Cafe Garage');
                 const restaurantName = localStorage.getItem('restaurantToFind');
-                database.child('Restaurants/' + restaurantName).on('value', function(snap) {
-                    longitude = parseFloat(snap.val()['long']);
-                    latitude = parseFloat(snap.val()['lat']);
-                    console.log('lat:' + latitude + ' long: ' + longitude);
-                    var location = { lat: latitude, lng: longitude };
-                    map = new google.maps.Map(document.getElementById('map'), {
-                        center: { lat: latitude, lng: longitude },
-                        zoom: 15,
-                    });
-                    var marker = new google.maps.Marker({ position: location, map: map });
-                });
+                // database.child('Restaurants/' + restaurantName).on('value', function(snap) {
+                //     longitude = parseFloat(snap.val()['long']);
+                //     latitude = parseFloat(snap.val()['lat']);
+                //     console.log('lat:' + latitude + ' long: ' + longitude);
+                //     var location = { lat: latitude, lng: longitude };
+                //     map = new google.maps.Map(document.getElementById('map'), {
+                //         center: { lat: latitude, lng: longitude },
+                //         zoom: 15,
+                //     });
+                //     var marker = new google.maps.Marker({ position: location, map: map });
+                // });
             }
-            document.getElementById('map').style.height = '650px';
+            function filter(from, to, categories, prices) {
+                console.log(from);
+                console.log(to);
+                console.log(categories);
+                console.log(prices);
+                // Root Ref
+                database = firebase.database().ref();
+            }
         </script>
+
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnOuekKGU_ZXety0h8_dCbvd41sdAQ9V4&callback=initMap"
             async
