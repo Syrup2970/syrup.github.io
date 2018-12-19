@@ -16,7 +16,6 @@ var database = firebase.database();
 var storage = firebase.storage();
 
 // Create a storage reference from our storage service
-var storageRef = storage.ref();
 
 //Create references
 // const dbRefRestaurants = database.ref().child("Restaurants");
