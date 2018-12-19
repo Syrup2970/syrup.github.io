@@ -1,66 +1,77 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+/* <!--===============================================================================================--> */
+/* Static Stars */
+#full-stars-example-one {}
 
-fieldset,
-label {
-    margin: 0;
-    padding: 0;
+#full-stars-example-one .rating-group {
+    display: inline-flex;
 }
 
-body {
-    margin: 20px;
+#full-stars-example-one .rating__icon {
+    pointer-events: none;
 }
 
-h1 {
-    font-size: 1.5em;
-    margin: 10px;
+#full-stars-example-one .rating__input {
+    position: absolute !important;
+    left: -9999px !important;
 }
 
-/****** Style Star Rating Widget *****/
-
-.rating {
-    border: none;
-    float: left;
-}
-
-.rating>input {
+#full-stars-example-one .rating__input--none {
     display: none;
 }
 
-.rating>label:before {
-    margin: 5px;
-    font-size: 1.25em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "\f005";
+#full-stars-example-one .rating__label {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 1rem;
 }
 
-.rating>.half:before {
-    content: "\f089";
-    position: absolute;
+#full-stars-example-one .rating__icon--star {
+    color: orange;
 }
 
-.rating>label {
+#full-stars-example-one .rating__input:checked~.rating__label .rating__icon--star {
     color: #ddd;
-    float: right;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
+/* <!--===============================================================================================--> */
 
-.rating>input:checked~label,
-/* show gold star when clicked */
-.rating:not(:checked)>label:hover,
-/* hover current star */
-.rating:not(:checked)>label:hover~label {
-    color: #FFD700;
+#full-stars-example-two {}
+
+#full-stars-example-two .rating-grouptwo {
+    display: inline-flex;
 }
 
-/* hover previous stars in list */
+#full-stars-example-two .rating__icontwo {
+    pointer-events: none;
+}
 
-.rating>input:checked+label:hover,
-/* hover current star when changing rating */
-.rating>input:checked~label:hover,
-.rating>label:hover~input:checked~label,
-/* lighten current selection */
-.rating>input:checked~label:hover~label {
-    color: #FFED85;
+#full-stars-example-two .rating__inputtwo {
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+#full-stars-example-two .rating__inputtwo--none {
+    display: none;
+}
+
+#full-stars-example-two .rating__labeltwo {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 1rem;
+}
+
+#full-stars-example-two .rating__icontwo--star {
+    color: orange;
+}
+
+#full-stars-example-two .rating__inputtwo:checked~.rating__labeltwo .rating__icontwo--star {
+    color: #ddd;
+}
+
+#full-stars-example-two .rating-grouptwo:hover .rating__labeltwo .rating__icontwo--star {
+    color: orange;
+}
+
+#full-stars-example-two .rating__inputtwo:hover~.rating__labeltwo .rating__icontwo--star {
+    color: #ddd;
 }

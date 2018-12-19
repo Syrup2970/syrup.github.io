@@ -2,24 +2,26 @@ var restaurant = "Cafe Garage";
 var user = "-LToSLiVem9wl8FYV-e1";
 //Create references
 const dbRefRestaurantImages = database.ref().child("Restaurant Images").child(restaurant);
-const dbRefRestaurantDetails = database.ref().child("Restaurant Details");
+const dbRefRestaurant = database.ref().child("Restaurants").child(restaurant);
+// const dbRefRating = database.ref().child("UserInfo").child("User Ratings")
 
 function setRestaurantName() {
     document.getElementById("#restaurantName").innerHTML = restaurant;
 }
 
 function setCover() {
-    dbRefRestaurantImages.on("child_added", function (data) {
-        (document.getElementById("#restaurantCover")).style.backgroundImage = "url(" + data.val() + ")";
-        (document.getElementById("#ratingsCover")).style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(" + data.val() + ")";
-        console.log(data.val());
+    dbRefRestaurantImages.on("value", function (data) {
+        (document.getElementById("#restaurantCover")).style.backgroundImage = "url(" + data.val().cover + ")";
+        (document.getElementById("#ratingsCover")).style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(" + data.val().cover + ")";
+        console.log("cover" + data.val()['cover']);
     });
 }
 
 function setOverview() {
-    dbRefRestaurantDetails.on("child_added", function (data) {
+    dbRefRestaurant.on("value", function (data) {
         (document.getElementById("#address")).innerHTML = data.val().address;
         (document.getElementById("#rating")).innerHTML = data.val().rating;
+        (document.getElementById("rating3-" + data.val().rating)).checked = true;
         (document.getElementById("#description")).innerHTML = data.val().description;
         (document.getElementById("#status")).innerHTML = data.val().status;
         (document.getElementById("#timings")).innerHTML = data.val().timings;
@@ -30,7 +32,7 @@ function setOverview() {
 }
 
 function setRatings() {
-    dbRefRestaurantDetails.on("child_added", function (data) {
+    dbRefRestaurant.on("value", function (data) {
         (document.getElementById("#ambiance")).setAttribute("data-percentage", data.val().ambiance);
         (document.getElementById("#ambiance-val")).innerHTML = data.val().ambiance + "%";
 
@@ -48,3 +50,10 @@ setRestaurantName();
 setCover();
 setOverview();
 setRatings();
+
+$(document).ready(function () {
+    $(".rating-grouptwo > label").on("click", function (event) {
+        radio_value = $(this).next("input[type='radio']").val();
+        alert(radio_value);
+    });
+});
