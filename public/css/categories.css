@@ -29,6 +29,7 @@
     font-family: Helvetica;
     font-weight: bold;
     font-size: 50px;
+    cursor: pointer;
 }
 
 .bar {

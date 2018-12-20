@@ -365,7 +365,7 @@
             // Get the elements that need to be directly changed or appended to
             var category_title = document.getElementById('card-title'); // will change text of this dynamically/
             var panelsContainer = document.getElementById('panelsContainer'); // will inject restaurants panels into this dynamically\
-            
+
             var category = localStorage.getItem('categoryToSearch'); // Hard Code Category for now. In future this will be sent dynamically by user when choosing category.
             category_title.innerText = category; // Changed The category title. Will change dynamically in future.
 
@@ -403,7 +403,6 @@
 
                             // Log for debugging
                             console.log(resSnaps.key);
-                            console.log(restaurantData['location']);
                             console.log(restaurantData['category']);
                             console.log(restaurantData['image']);
 

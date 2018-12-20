@@ -106,12 +106,11 @@
         <div class="container-fluid category-section">
             <div class="row">
                 <div class="col-6 col-md-4 col-lg-3 padder">
-                    <a href="CategoryResults.html">
-                        <img
-                            id="categoryimg"
-                            src="https://i.pinimg.com/564x/cb/b0/6e/cbb06e8ca780bb5f7a2f32422d88e4df.jpg"
-                            alt=""
-                    /></a>
+                    <img
+                        id="categoryimg"
+                        src="https://i.pinimg.com/564x/cb/b0/6e/cbb06e8ca780bb5f7a2f32422d88e4df.jpg"
+                        alt=""
+                    />
                     <div class="text-block-categories" style="left:15%">
                         Chinese
                         <div class="bar"></div>
@@ -125,25 +124,25 @@
                         alt=""
                     />
                     <div class="text-block-categories">
-                        Barbeque
+                        Fast Food
                         <div class="bar"></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 padder">
                     <img id="categoryimg" src="images/popular3.jpg" alt="" />
                     <div class="text-block-categories">
-                        Oriental
+                        Cafe
                         <div class="bar"></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 padder">
                     <img id="categoryimg" src="images/popular4.jpg" alt="" />
-                    <div class="text-block-categories" style="left:30%">
-                        Desi
+                    <div class="text-block-categories">
+                        Barbeque
                         <div class="bar"></div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3 padder">
+                <!-- <div class="col-6 col-md-4 col-lg-3 padder">
                     <img id="categoryimg" src="images/popular10.jpg" alt="" />
                     <div class="text-block-categories" style="left:15%">
                         Fast Food
@@ -176,10 +175,10 @@
                         alt=""
                     />
                     <div class="text-block-categories" style="left:10%">
-                        Gourmet
+                        Desi
                         <div class="bar"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -405,16 +404,14 @@
             </section>
         </footer>
         <script>
-
             $('.text-block-categories').click(function(e) {
                 e.preventDefault();
                 var categoryNode = e.target;
                 var categoryName = categoryNode.innerText.trim();
                 console.log(categoryName);
                 localStorage.setItem('categoryToSearch', categoryName);
-                window.location = 'http://127.0.0.1:5500/public/CategoriesResults.html';
+                window.location.href = 'http://127.0.0.1:5500/public/CategoryResults.html';
             });
-            
         </script>
     </body>
 </html>
