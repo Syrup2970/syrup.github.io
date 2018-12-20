@@ -24,7 +24,7 @@
     <!-- Add additional services that you want to use -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script> -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script> -->
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/app.js"></script>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -74,11 +74,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Categories.html">CATEGORIES</a>
                     </li>
-                    <li>
-                        <a class="btn btn-link-3" href="Sign-in.html">LOG IN</a>
+                    <li >
+                        <a  id="signin" class="btn btn-link-3" href="Sign-in.html">LOG IN</a>
                     </li>
-                    <li>
-                        <a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a>
+                    <li >
+                        <a id="signup" class="btn btn-link-3" href="Sign-up.html">SIGN UP</a>
                     </li>
                 </ul>
             </div>
@@ -182,130 +182,15 @@
         </div>
     </div>
 
-    <!-- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row marginSetting">
             <div class="col-10 mx-auto">
-                <div class="row" id="panelsContainer"> -->
+                <div class="row" id="panelsContainer">
                     <!-- The panels will be appended to this div -->
                     <!--
                         For Hamna : Container should be empty at first. The Items will be appended to the div above
                     -->
-                <!-- </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    <div class="container-fluid">
-        <div class="row marginSetting">
-            <div class="d-none d-lg-block col-lg-1 "></div>
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>SUSHI</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular1.jpg" />
-
-                <a href="Restaurant.html">
-                    <p class="homeContainer"><b>The Chinese Cafe'</b></p>
-                </a>
-
-                <span> THE CHINESE CAFE </span>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>PASTA</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular9.jpg" />
-                <p class="homeContainer legendFont"><b>Tayto</b></p>
-
-                <span> TAYTO </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>DUMPLINGS</li>
-                </ul>
-
-                <img class="centered imageTranslate divPositioning imagePositioning" src="images/popular2.jpg" />
-                <p class="homeContainer legendFont"><b>Asian&nbspWok</b></p>
-                <span> ASIAN WOK </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>SAUCY&nbspLEGPIECES</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning" src="images/popular3.jpg" />
-                <p class="homeContainer legendFont"><b>Khokha Khola</b></p>
-                <span> KHOKA KHOLA </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>MACARONS</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning" src="images/popular4.jpg" />
-                <p class="homeContainer legendFont"><b>Crema</b></p>
-                <span> CREMA </span>
-            </div>
-            <div class="d-none d-lg-block col-lg-1"></div>
-            <div class="d-none d-lg-block col-lg-1"></div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>ICECREAM&nbspTARTS</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning img-fluid" src="images/popular5.jpg" />
-                <p class="homeContainer legendFont"><b>Zummy's</b></p>
-                <span> ZUMMY'S </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>DOUGHNUTS</li>
-                </ul>
-
-                <img class="imageTranslate divPositioning imagePositioning" src="images/popular6.jpg" />
-                <p class="homeContainer legendFont">
-                    <b>Guilty Pleasures</b>
-                </p>
-                <span> GUILTY PLEASURES </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>CONTINENTAL&nbspSALAD</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning" src="images/popular7.jpg" />
-                <p class="homeContainer legendFont">
-                    <b>Beef Lettuce Tomato</b>
-                </p>
-                <span> BLT </span>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>MEAT&nbspBALLS</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning" src="images/popular8.jpg" />
-                <p class="homeContainer legendFont"><b>Cravings</b></p>
-                <span> CRAVINGS </span>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 divPositioning wrap">
-                <ul class="verticalAlignText">
-                    <li>NEW YORK BEEF BURGER</li>
-                </ul>
-
-                <img class="centered imageTranslate imagePositioning" src="images/popular10.jpg" />
-                <p class="homeContainer legendFont"><b>Jessie's</b></p>
-                <span> JESSIE'S </span>
+                 </div>
             </div>
         </div>
     </div>
@@ -550,34 +435,110 @@
 </body>
 
 <script>
-var config = {
-    apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
-    authDomain: "syrup-6e640.firebaseapp.com",
-    databaseURL: "https://syrup-6e640.firebaseio.com",
-    projectId: "syrup-6e640",
-    storageBucket: "syrup-6e640.appspot.com",
-    messagingSenderId: "428019578808"
-};
-firebase.initializeApp(config);
+
+firebase.auth().onAuthStateChanged(function(user) {
+
+    if (user) {
+        signupBtn = document.getElementById('signup');
+        signinBtn = document.getElementById('signin');
+        signupBtn.style.visibility = 'hidden';
+        signinBtn.style.visibility = 'hidden';
+    }
+    else{
+
+    }
+
+});
+
+
 
 const db = firebase.database().ref();
+var topRatedRestaurants = db.child('Restaurants/').orderByChild('rating').limitToLast(8);
 
+//var topRatedRestaurants_desc = reverseObject(topRatedRestaurants);
 
 console.log(db.child('Restaurants/').orderByChild('rating'));
 
+topRatedRestaurants.once('value', function(snapNames) {
+                var i = 0;
 
 
+                snapNames.forEach(function(childName) {
+                    // childName loops through the list of Resturant Names Recieved under the category.
+                    db.child('Restaurants/' + childName.key).once(
+                        // The I Get the data of just that restaurant (childName) in the Resturants Table.
+                        'value',
+                        function(resSnaps) {
+                            // Here I have the data of Exactly one Resturant.
+                            // This loop will have specific data everytime the outer loop chnages the child name childName.
+                            const restaurantData = resSnaps.val(); // extract data
 
-// db.child('Restaurants').once('value', function(snapNames) {
+                            // Log for debugging
+                            console.log(resSnaps.key);
+                            console.log(restaurantData['location']);
+                            console.log(restaurantData['category']);
+                            console.log(restaurantData['image']);
+                            console.log(restaurantData['rating']);
 
-//     snapNames.forEach(function(childName) {
-//         var topRatedRestaurants = db.child('Restaurants/' + childName.key).orderByChild('rating');
-//         console.log(topRatedRestaurants);
-//     });
-// });
-// var topRatedRestaurantsRef = firebase.database.ref('Restaurants'){
+                            //  -- Folow Steps in This Order Please --
 
-// }
+                            // Create Elements  -- For Hamna --
+                            var div = document.createElement('div');
+                            var ul = document.createElement('ul');
+                            var li = document.createElement('li');
+                            var img = document.createElement('img');
+                            var a = document.createElement('a');
+                            var p = document.createElement('p');
+                            var b = document.createElement('b');
+                            var span = document.createElement('span');
+
+                            console.log(a);
+
+                            // Attach Classes -- For Hamna --
+                            div.classList.add('col-md-3', 'col-6', 'divPositioning', 'wrap');
+                            ul.classList.add('verticalAlignText');
+                            li.innerText = restaurantData['speciality'];
+                            img.classList.add(
+                                'centered',
+                                'imageTranslate',
+                                'imagePositioning',
+                                'img-fluid'
+                            );
+                            img.src = restaurantData['image'];
+                            a.setAttribute('href', '#');
+                            console.log(a);
+                            p.classList.add('homeContainer');
+                            b.innerText = resSnaps.key;
+                            span.innerText = resSnaps.key;
+
+                            // Structure Properly -- For Hamna --
+                            // Append things in proper order for example.
+                            ul.appendChild(li); // first the li to the ul
+                            div.appendChild(ul); // then the ul to the div.
+                            div.appendChild(img);
+                            a.appendChild(p);
+                            console.log(a);
+                            p.appendChild(b);
+                            console.log(p);
+                            div.appendChild(a);
+                            div.appendChild(span);
+
+
+                            // Appending to Container
+                            panelsContainer.appendChild(div);
+
+                            $(b).click(function(e) {
+                                e.preventDefault();
+                                var resNode = e.target;
+                                var resName = resNode.innerText.trim();
+                                console.log(resName);
+                                localStorage.setItem('restaurantToSearch', resName);
+                                window.location = 'Restaurant.html';
+                            });
+                        }
+                    );
+                });
+            });
 
 </script>
 

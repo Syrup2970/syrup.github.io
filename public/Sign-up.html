@@ -25,20 +25,11 @@
     <!-- Optional JavaScript -->
 
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/app.js"></script>
 
 
     <script type="text/javascript">
 
-    var config = {
-    apiKey: "AIzaSyBerqgdPGGc4xkX-GSju3Xnxcla3vU_jU4",
-    authDomain: "syrup-6e640.firebaseapp.com",
-    databaseURL: "https://syrup-6e640.firebaseio.com",
-    projectId: "syrup-6e640",
-    storageBucket: "syrup-6e640.appspot.com",
-    messagingSenderId: "428019578808"
-};
-firebase.initializeApp(config);
         /**
          * Handles the sign up button press.
          */
@@ -70,8 +61,7 @@ firebase.initializeApp(config);
                 // [END_EXCLUDE]
             });
             // [END createwithemail]
-
-            var user_details = firebase.database().ref().child("UserInfo");
+            var user_details = firebase.database().ref().child("UserInfo/Users");
         // Get input values from each of the form elements
          var displayName = document.getElementById('username').value;
          var contactNumber = document.getElementById('contact').value;
@@ -82,10 +72,7 @@ firebase.initializeApp(config);
             "username": displayName,
             "contact": contactNumber
         });
-
-
         }
-
         /**
          * initApp handles setting up UI event listeners and registering Firebase auth listeners:
          *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
@@ -103,12 +90,9 @@ firebase.initializeApp(config);
                     var displayName = user.displayName;
                     var email = user.email;
                     var uid = user.uid;
-
-                    window.location.href = "UserProfilePage.html";
-
+                    //window.location.href = "UserProfilePage.html";
                 }
             });
-
             document.getElementById('signup').addEventListener('click', handleSignUp, false);
         }
         window.onload = function () {
@@ -158,12 +142,12 @@ firebase.initializeApp(config);
                     <li class="nav-item">
                         <a class="nav-link" href="Categories.html">CATEGORIES</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="btn btn-link-3" href="Sign-in.html">LOG IN</a>
                     </li>
                     <li>
                         <a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

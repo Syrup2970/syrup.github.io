@@ -10,7 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 // Get a reference to the database service
-var database = firebase.database();
+//var database = firebase.database();
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 var storage = firebase.storage();
@@ -19,12 +19,12 @@ var storage = firebase.storage();
 var storageRef = storage.ref();
 
 //Create references
-const dbRefRestaurants = database.ref().child("Restaurants");
+// const dbRefRestaurants = database.ref().child("Restaurants");
 
-//Sync Object Changes
-dbRefRestaurants.on("child_added", function (data) {
-    console.log(data.val());
-});
+// //Sync Object Changes
+// dbRefRestaurants.on("child_added", function (data) {
+//     console.log(data.val());
+// });
 
 // dbRefRestaurants.set({
 //     category: "Fast Food",

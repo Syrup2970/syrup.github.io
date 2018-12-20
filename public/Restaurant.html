@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <!-- Required meta tags -->
     <!-- Required meta tags -->
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,6 +25,12 @@
     <link href="css/home-page.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/ProgressCircle.css">
+
+            <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+        <script src="js/app.js"></script>
+
+
 
 
     <title>Restaurant</title>
@@ -62,8 +68,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Categories.html">CATEGORIES</a>
                     </li>
-                    <li><a class="btn btn-link-3" href="Sign-in.html">LOG IN</a></li>
-                    <li><a class="btn btn-link-3" href="Sign-up.html">SIGN UP</a></li>
+                    <li><a id = "signin" class="btn btn-link-3" href="Sign-in.html">LOG IN</a></li>
+                    <li><a id = "signup" class="btn btn-link-3" href="Sign-up.html">SIGN UP</a></li>
                 </ul>
             </div>
         </div>
@@ -74,9 +80,7 @@
             <div class="col-12 div-right">
 
             </div>
-            <div class="text-block">
-                RESTAURANT
-            </div>
+            <div id="restaurantName" class="text-block"></div>
         </div>
     </div>
 
@@ -220,8 +224,8 @@
 
         <section class="ratings inner-restaurant-image row">
             <div class=" offset-sm-4 offset-md-8 col-md-4 col-sm-6s">
-                <button class="favourite" type="button">Add to Wishlist <i class="far fa-star"></i></button>
-                <button class="wishlist"> Favourite <i class="far fa-heart"></i> </button>
+                <button id="wishlistbtn" class="favourite" type="button">Add to Wishlist <i id="wishliststar" class="far fa-star"></i></button>
+                <button id = "favbtn" class="wishlist"> Favourite <i class="far fa-heart"></i> </button>
             </div>
 
 
@@ -933,6 +937,78 @@
     <script src="js/gridslider.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/ProgressCircle.js"></script>
+
+    <script>
+
+            var restaurant_title = document.getElementById('restaurantName');
+            var restaurant = localStorage.getItem('restaurantToSearch');
+            console.log(restaurant);
+            restaurant_title.innerText = restaurant;
+            var wishlistBtn = document.getElementById('wishlistbtn');
+            var favBtn = document.getElementById('favbtn');
+
+
+
+                firebase.auth().onAuthStateChanged(function(user) {
+
+                if (user) {
+
+                    signupBtn = document.getElementById('signup');
+                    signinBtn = document.getElementById('signin');
+                    signupBtn.style.visibility = 'hidden';
+                    signinBtn.style.visibility = 'hidden';
+
+                    wishlistBtn.addEventListener('click', function(){
+
+                        restaurant_title = document.getElementById('restaurantName');
+                        restaurant = localStorage.getItem('restaurantToSearch');
+                        console.log(restaurant);
+                        restaurant_title.innerText = restaurant;
+                        // wishlistBtn = document.getElementById('wishlistbtn');
+                        // var wishlistStar = document.getElementById('wishliststar');
+
+                        console.log(user.uid);
+                        var userUID = firebase.auth().currentUser.uid;
+                        const db = firebase.database().ref();
+                        var userWishlist = db.child('UserInfo/User Wishlists');
+                        console.log(userWishlist);
+                        userWishlist.child(user.uid).push({
+                            "resname": restaurant
+                        });
+
+                        wishlistBtn.style.backgroundColor = 'gray';
+                });
+
+                favBtn.addEventListener('click', function(){
+
+                        restaurant = localStorage.getItem('restaurantToSearch');
+                        console.log(restaurant);
+                        console.log(user.uid);
+                        var userUID = firebase.auth().currentUser.uid;
+                        const db = firebase.database().ref();
+                        var userFavorites = db.child('UserInfo/User Favourites');
+                        console.log(userFavorites);
+                        userFavorites.child(user.uid).push({
+                            "resname": restaurant
+                        });
+
+                        favBtn.style.backgroundColor = 'gray';
+                });
+
+            }
+                else {
+                    // No user is signed in.
+                    wishlistBtn.style.visibility = 'hidden';
+                    favBtn.style.visibility = 'hidden';
+                    console.log("button should be hidden");
+                }
+
+
+            });
+
+
+    </script>
+
 
 </body>
 
