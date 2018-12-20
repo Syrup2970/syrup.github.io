@@ -227,6 +227,7 @@ function showComments() {
                 var p1 = document.createElement('p'); //
                 var p2 = document.createElement('p'); //
                 var span = document.createElement('span'); //
+                var br = document.createElement('br'); //
 
                 // // Attach Classes
                 li.classList.add('list-group-item');
@@ -246,7 +247,7 @@ function showComments() {
                 h6.innerText = messageSnap.val().username;
                 p1.innerText = messageSnap.val().timestamp;
                 img.src = messageSnap.val().thumbnail;
-                span.innerText = messageSnap.val().userrating;
+                span.innerHTML = " Rating: " + messageSnap.val().userrating + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
                 // Structure Properly
                 // Append things in proper order for example.
@@ -256,6 +257,7 @@ function showComments() {
                 div2.appendChild(div3);
                 div3.appendChild(h6);
                 div3.appendChild(p1);
+
                 div3.appendChild(p2);
                 p2.appendChild(span);
                 p2.innerHTML += messageSnap.val().comment;
