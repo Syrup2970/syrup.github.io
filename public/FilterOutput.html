@@ -108,8 +108,10 @@
                 <div class="info-card  col-sm-10 col-md-11 col-lg-5 div-left-info">
                     <div class="card">
                         <div class="card-body">
-                            <a href="Restaurant.html"> <h1 class="card-title">Restaurant Name</h1> </a>
-                            <h6 class="mb-2 text-muted">
+                            <a href="Restaurant.html">
+                                <h1 class="card-title" id="restaurant-name">Restaurant Name</h1>
+                            </a>
+                            <h6 class="mb-2 text-muted" id="rating">
                                 Overall Rating
                                 <span class="rating"
                                     ><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i
@@ -117,30 +119,30 @@
                                 ></span>
                             </h6>
                             <h6 class="mb-2 text-muted ">Description</h6>
-                            <p class="card-text ">
+                            <p class="card-text" id="description">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis tempore omnis
                                 vero, tempora adipisci, ut recusandae enim voluptate aut consequuntur, fugiat repellat
                                 tenetur dolorum porro placeat ipsum earum exercitationem asperiores.
                             </p>
 
-                            <p class="location card-subtitle text-muted">
+                            <p class="location card-subtitle text-muted" id="status">
                                 <i class="far fa-clock"></i> &nbsp; Closed Today · Opens Thursday at 4:00 PM
                             </p>
 
-                            <p class="location card-subtitle text-muted">
+                            <p class="location card-subtitle text-muted" id="address">
                                 <i class="fas fa-map-marker-alt"></i>&nbsp; Riverplace, North Woodstock, NH 03262, USA
                             </p>
-                            <p class="location card-subtitle text-muted">
+                            <p class="location card-subtitle text-muted" id="phone">
                                 <i class="fas fa-phone"></i>&nbsp; 0333 5952109
                             </p>
-                            <p class="location card-subtitle text-muted">
+                            <p class="location card-subtitle text-muted" id="link">
                                 <i class="fab fa-chrome"></i>&nbsp; <a href="www.google.com"> www.restaurant.com</a>
                             </p>
-                            <p class="location card-subtitle text-muted">
+                            <!-- <p class="location card-subtitle text-muted" >
                                 <i class="fas fa-directions"></i>&nbsp; Get Directions
-                            </p>
+                            </p> -->
                             <br />
-                            <a href="Menu.html" class="card-link">
+                            <a href="Menu.html" class="card-link" id="menu-link">
                                 <h5 class="mb-2 text-muted ">Check out our Menu</h5>
                             </a>
                             <br />
@@ -153,7 +155,7 @@
             </div>
         </section>
 
-        <br />
+        <!-- <br />
         <br />
         <br />
         <div class="divider-1"><div class="line"></div></div>
@@ -193,7 +195,7 @@
                     <span> TAYTO </span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <br />
         <br />
@@ -385,7 +387,15 @@
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
         <script src="js/app.js"></script>
         <script>
-            document.getElementById('map').style.height = '650px';
+            $(document).ready(function() {
+                $('#menu-link').click(function(e) {
+                    e.preventDefault();
+                    var menuToSearch = $('#restaurant-name').text();
+                    localStorage.setItem('menuToSearch', menuToSearch);
+                    window.location.href = 'http://127.0.0.1:5500/public/Menu.html';
+                });
+            });
+            document.getElementById('map').style.height = '500px';
             var mapBool = true;
             var map;
             function initMap() {
@@ -397,20 +407,6 @@
                 // Root Ref
                 database = firebase.database().ref();
                 filter(from, to, categoryArray, priceArray, database);
-
-                // var latitude = 0;
-                // var longitude = 0;
-                // database.child('Restaurants/' + restaurantName).on('value', function(snap) {
-                //     longitude = parseFloat(snap.val()['long']);
-                //     latitude = parseFloat(snap.val()['lat']);
-                //     console.log('lat:' + latitude + ' long: ' + longitude);
-                //     var location = { lat: latitude, lng: longitude };
-                //     map = new google.maps.Map(document.getElementById('map'), {
-                //         center: { lat: latitude, lng: longitude },
-                //         zoom: 15,
-                //     });
-                //     var marker = new google.maps.Marker({ position: location, map: map });
-                // });
             }
             function filter(from, to, categories, prices, database) {
                 console.log(from);
@@ -419,6 +415,11 @@
                 console.log(prices);
                 category = categories[0];
                 var filteredArray = [];
+                var timeBool = false;
+                if (from && to) {
+                    console.log('From and to Given');
+                    timeBool = true;
+                }
 
                 database.child('Categories/' + category).once('value', function(snapNames) {
                     snapNames.forEach(function(childName) {
@@ -438,55 +439,108 @@
                                 ) {
                                     // After Price Filter
                                     console.log(restaurantData);
+                                    if (timeBool) {
+                                        alert('time was given');
+                                        // Now for Time related calculations
+                                        var resFrom = restaurantData['from'].split(':');
+                                        console.log(resFrom);
+                                        var resTo = restaurantData['to'].split(':');
+                                        console.log(resTo);
 
-                                    // Now for Time related calculations
-
-                                    var resFrom = restaurantData['from'].split(':');
-                                    console.log(resFrom);
-                                    var resTo = restaurantData['to'].split(':');
-                                    console.log(resTo);
-
-                                    // Creating Restaurant Timings
-                                    var resOpeningTime = new Date(
-                                        2018,
-                                        11,
-                                        20,
-                                        parseInt(resFrom[0]),
-                                        parseInt(resFrom[1])
-                                    );
-                                    if (parseInt(resTo[0]) < parseInt(resFrom[0])) {
-                                        var resClosingTime = new Date(
-                                            2018,
-                                            12,
-                                            20,
-                                            parseInt(resTo[0]),
-                                            parseInt(resTo[1])
-                                        ); // If close in next day - AM
-                                    } else {
-                                        var resClosingTime = new Date(
+                                        // Creating Restaurant Timings
+                                        var resOpeningTime = new Date(
                                             2018,
                                             11,
                                             20,
-                                            parseInt(resTo[0]),
-                                            parseInt(resTo[1])
-                                        ); // if close in same day - PM
-                                    }
-                                    var fromTime = new Date(2018, 11, 20, parseInt(from[0]), parseInt(from[1]));
-                                    var toTime = new Date(2018, 11, 20, parseInt(to[0]), parseInt(to[1]));
-                                    var startingCheck = (fromTime - resOpeningTime) / 1000 / 60;
-                                    console.log(startingCheck);
-                                    var endingCheck = (resClosingTime - toTime) / 1000 / 60;
-                                    console.log(endingCheck);
+                                            parseInt(resFrom[0]),
+                                            parseInt(resFrom[1])
+                                        );
+                                        if (parseInt(resTo[0]) < parseInt(resFrom[0])) {
+                                            var resClosingTime = new Date(
+                                                2018,
+                                                12,
+                                                20,
+                                                parseInt(resTo[0]),
+                                                parseInt(resTo[1])
+                                            ); // If close in next day - AM
+                                        } else {
+                                            var resClosingTime = new Date(
+                                                2018,
+                                                11,
+                                                20,
+                                                parseInt(resTo[0]),
+                                                parseInt(resTo[1])
+                                            ); // if close in same day - PM
+                                        }
 
-                                    console.log('Opening Time: ' + resOpeningTime + ' Closing Time: ' + resClosingTime);
-                                    console.log('From: ' + fromTime + ' To: ' + toTime);
+                                        var fromTime = new Date(2018, 11, 20, parseInt(from[0]), parseInt(from[1]));
+                                        if (parseInt(to[0]) < parseInt(from[0])) {
+                                            var toTime = new Date(2018, 12, 20, parseInt(to[0]), parseInt(to[1])); // If close in next day - AM
+                                        } else {
+                                            var toTime = new Date(2018, 11, 20, parseInt(to[0]), parseInt(to[1])); // if close in same day - PM
+                                        }
+                                        var toTime = new Date(2018, 11, 20, parseInt(to[0]), parseInt(to[1]));
+                                        var startingCheck = (fromTime - resOpeningTime) / 1000 / 60;
+                                        console.log(startingCheck);
+                                        var endingCheck = (resClosingTime - toTime) / 1000 / 60;
+                                        console.log(endingCheck);
 
-                                    if (startingCheck > 0 && endingCheck > 0) {
-                                        console.log(restaurantData.lat);
-                                        console.log(restaurantData.long);
-                                        filteredArray.push(restaurantData);
-                                        console.log(filteredArray[0]);
+                                        console.log(
+                                            'Opening Time: ' + resOpeningTime + ' Closing Time: ' + resClosingTime
+                                        );
+                                        console.log('From: ' + fromTime + ' To: ' + toTime);
 
+                                        if (startingCheck > 0 && endingCheck > 0) {
+                                            console.log(restaurantData.lat);
+                                            console.log(restaurantData.lng);
+                                            filteredArray.push(restaurantData);
+                                            // console.log(filteredArray[0]);
+
+                                            if (mapBool) {
+                                                mapBool = false;
+                                                document.getElementById('restaurant-name').innerText = resSnaps.key;
+                                                document.getElementById('address').innerText =
+                                                    'Address: ' + restaurantData.address;
+                                                document.getElementById('rating').innerText =
+                                                    'Overall Rating: ' + restaurantData.rating;
+                                                document.getElementById('description').innerText =
+                                                    restaurantData.description;
+                                                document.getElementById('status').innerText =
+                                                    'Status: ' + restaurantData.status;
+                                                // document.getElementById('timings').innerHTML = restaurantData.timings;
+                                                document.getElementById('phone').innerText =
+                                                    'Phone: ' + restaurantData.phone;
+                                                document.getElementById('link').innerText =
+                                                    'Website: ' + restaurantData.link;
+                                                var longitude = parseFloat(restaurantData.lng);
+                                                var latitude = parseFloat(restaurantData.lat);
+                                                console.log('lat:' + latitude + ' long: ' + longitude);
+                                                var location = { lat: latitude, lng: longitude };
+                                                map = new google.maps.Map(document.getElementById('map'), {
+                                                    center: { lat: latitude, lng: longitude },
+                                                    zoom: 15,
+                                                });
+                                                var marker = new google.maps.Marker({ position: location, map: map });
+                                                this.directionsService = new google.maps.DirectionsService();
+                                                this.directionsDisplay = new google.maps.DirectionsRenderer();
+                                                this.directionsDisplay.setMap(map);
+                                                var start = {
+                                                    lat: parseFloat(localStorage.getItem('originLat')),
+                                                    lng: parseFloat(localStorage.getItem('originLng')),
+                                                };
+                                                var end = location;
+                                                var request = {
+                                                    origin: start,
+                                                    destination: end,
+                                                    travelMode: google.maps.DirectionsTravelMode.DRIVING,
+                                                };
+                                                directionsService.route(request, function(response, status) {
+                                                    directionsDisplay.setDirections(response);
+                                                });
+                                            }
+                                        }
+                                    } else {
+                                        alert('Time was not given');
                                         if (mapBool) {
                                             mapBool = false;
                                             var longitude = parseFloat(restaurantData.lng);
@@ -498,22 +552,6 @@
                                                 zoom: 15,
                                             });
                                             var marker = new google.maps.Marker({ position: location, map: map });
-                                            this.directionsService = new google.maps.DirectionsService();
-                                            this.directionsDisplay = new google.maps.DirectionsRenderer();
-                                            this.directionsDisplay.setMap(map);
-                                            var start = {
-                                                lat: parseFloat(localStorage.getItem('originLat')),
-                                                lng: parseFloat(localStorage.getItem('originLng')),
-                                            };
-                                            var end = location;
-                                            var request = {
-                                                origin: start,
-                                                destination: end,
-                                                travelMode: google.maps.DirectionsTravelMode.DRIVING,
-                                            };
-                                            directionsService.route(request, function(response, status) {
-                                                directionsDisplay.setDirections(response);
-                                            });
                                         }
                                     }
                                 }
