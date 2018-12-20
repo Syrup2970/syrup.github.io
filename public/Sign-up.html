@@ -60,6 +60,7 @@
                 // [END_EXCLUDE]
             });
             // [END createwithemail]
+
         }
         /**
          * Sends an email verification to the user.
@@ -98,6 +99,20 @@
         //     });
         //     // [END sendpasswordemail];
         // }
+
+        var user_details = firebase.database().ref().child("UserInfo");
+        // Get input values from each of the form elements
+        var displayName = document.getElementById('username').value;
+        var contactNumber = document.getElementById('contact').value;
+        // Push a new recommendation to the database using those values
+        user_details.push({
+            "email": email,
+            "password": password,
+            "username": displayName,
+            "contact": contactNumber
+        });
+
+
         /**
          * initApp handles setting up UI event listeners and registering Firebase auth listeners:
          *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
@@ -145,7 +160,13 @@
             document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
             // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
             // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+
+            var uid = user.uid;
+
+            window.location.href = "UserProfilePage.html";
+
         }
+        document.getElementById('signup').addEventListener('click', handleSignUp, false);
         window.onload = function () {
             initApp();
         };
@@ -252,11 +273,18 @@
                         <div class="w3ls-subscribe">
                             <h4>New User?</h4>
                             <!-- <form action="#" method="post"> -->
-                            <input type="text" name="Search" placeholder="UserName" required="" />
+                            <<<<<<< HEAD <input type="text" name="Search" placeholder="UserName" required="" />
                             <input type="email" id="email" name="Search" placeholder="Email" required="" />
                             <input type="password" id="password" name="Password" placeholder="Password" required="" />
                             <input type="password" name="Password" placeholder="Confirm Password" required="" />
                             <button id="quickstart-sign-up">Sign Up</button>
+                            =======
+                            <input id="username" type="text" name="Search" placeholder="UserName" required="" />
+                            <input type="email" id="email" name="Search" placeholder="Email" required="" />
+                            <input type="password" id="password" name="Password" placeholder="Password" required="" />
+                            <input id="contact" type="text" name="contact" placeholder="Contact Number" required="" />
+                            <button id="signup">Sign Up</button>
+                            >>>>>>> hamna_branch
                             <!-- </form> -->
                         </div>
                     </div>

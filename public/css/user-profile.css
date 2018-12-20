@@ -1,10 +1,5 @@
-/* Make the image fully responsive */
-
-@media (min-width: 768px) {
-    .navbar-nav>li>a {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
+input[type="file"] {
+    display: none;
 }
 
 .divider-1 {
@@ -223,6 +218,20 @@ p {
 
 .slide {
     margin: 0;
+}
+
+.avatar {
+    object-fit: cover;
+    height: 20vh;
+}
+
+/* Make the image fully responsive */
+
+@media (min-width: 768px) {
+    .navbar-nav>li>a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 }
 
 @media only screen and (max-width: 992px) {

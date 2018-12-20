@@ -17,7 +17,7 @@
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.contact100-form-btn').on('click', function () {
+    $('.contact100-form-btn3').on('click', function () {
         var check = true;
 
         for (var i = 0; i < input.length; i++) {
@@ -65,12 +65,12 @@
     /*==================================================================
     [ Show / hide Form ]*/
 
-    $('.contact100-btn-hide').on('click', function () {
-        $('.wrap-contact100').fadeOut(400);
+    $('.contact100-btn-hide3').on('click', function () {
+        $('.wrap-contact1003').fadeOut(400);
     })
 
-    $('.contact100-btn-show').on('click', function () {
-        $('.wrap-contact100').fadeIn(400);
+    $('.contact100-btn-show3').on('click', function () {
+        $('.wrap-contact1003').fadeIn(400);
     })
 
 })(jQuery);

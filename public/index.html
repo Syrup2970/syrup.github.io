@@ -24,7 +24,7 @@
     <!-- Add additional services that you want to use -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script> -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script> -->
-    <script src="js/app.js"></script>
+
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -33,12 +33,12 @@
         crossorigin="anonymous"></script>
     <script src="js/nav.js"></script>
 
-    <script src="js/choices.js"></script>
-    <script>
+    <!-- <script src="js/choices.js"></script> -->
+    <!-- <script>
         var textPresetVal = new Choices("#choices-text-preset-values", {
                 removeItemButton: true
             });
-        </script>
+        </script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/waypoints.min.js"></script>
@@ -120,11 +120,11 @@
         </form>
     </div>
 
-    <script>
+    <!-- <script>
         var textPresetVal = new Choices("#choices-text-preset-values", {
             removeItemButton: true
         });
-    </script>
+    </script> -->
 
     <br />
     <br />
@@ -177,6 +177,20 @@
             </div>
         </div>
     </div>
+
+    <!-- <div class="container-fluid">
+        <div class="row marginSetting">
+            <div class="col-10 mx-auto">
+                <div class="row" id="panelsContainer"> -->
+    <!-- The panels will be appended to this div -->
+    <!--
+                        For Hamna : Container should be empty at first. The Items will be appended to the div above
+                    -->
+    <!-- </div>
+            </div>
+        </div>
+    </div> -->
+
 
     <div class="container-fluid">
         <div class="row marginSetting">
@@ -530,5 +544,11 @@
         </section>
     </footer>
 </body>
+<script src="js/app.js"></script>
+
+<script>
+    const db = firebase.database().ref();
+    console.log(db.child('Restaurants/').orderByChild('rating'));
+</script>
 
 </html>

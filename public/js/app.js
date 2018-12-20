@@ -19,12 +19,12 @@ var storage = firebase.storage();
 var storageRef = storage.ref();
 
 //Create references
-// const dbRefRestaurants = database.ref().child("Restaurants");
+const dbRefRestaurants = database.ref().child("Restaurants");
 
-// //Sync Object Changes
-// dbRefRestaurants.on("child_added", function (data) {
-//     console.log(data.val());
-// });
+//Sync Object Changes
+dbRefRestaurants.on("child_added", function (data) {
+    console.log("test" + data.key);
+});
 
 // dbRefRestaurants.set({
 //     category: "Fast Food",
